@@ -7,7 +7,7 @@ variable "aws_secret_key" {}
 variable "private_key_path" {}
 variable "key_name" {}
 variable "region" {
-  default = "us-east-1"
+  default = "sa-east-1"
 }
 variable "network_address_space" {
   default = "10.1.0.0/16"
@@ -92,7 +92,7 @@ resource "aws_route_table_association" "rta-subnet1" {
 }
 
 # SECURITY GROUPS #
-# Nginx security group 
+# Nginx security group
 resource "aws_security_group" "nginx-sg" {
   name   = "nginx_sg"
   vpc_id = aws_vpc.vpc.id
