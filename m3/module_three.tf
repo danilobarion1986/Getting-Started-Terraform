@@ -7,7 +7,7 @@ variable "aws_secret_key" {}
 variable "private_key_path" {}
 variable "key_name" {}
 variable "region" {
-  default = "us-east-1"
+  default = "sa-east-1"
 }
 
 ##################################################################################
@@ -23,6 +23,8 @@ provider "aws" {
 ##################################################################################
 # DATA
 ##################################################################################
+#
+# Pulling data from the provider
 
 data "aws_ami" "aws-linux" {
   most_recent = true
@@ -71,6 +73,7 @@ resource "aws_security_group" "allow_ssh" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  # Allow traffic from the instance to the internet
   egress {
     from_port   = 0
     to_port     = 0
