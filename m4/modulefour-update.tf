@@ -76,7 +76,6 @@ resource "aws_subnet" "subnet1" {
   vpc_id                  = aws_vpc.vpc.id
   map_public_ip_on_launch = "true"
   availability_zone       = data.aws_availability_zones.available.names[0]
-
 }
 
 resource "aws_subnet" "subnet2" {
@@ -84,7 +83,6 @@ resource "aws_subnet" "subnet2" {
   vpc_id                  = aws_vpc.vpc.id
   map_public_ip_on_launch = "true"
   availability_zone       = data.aws_availability_zones.available.names[1]
-
 }
 
 # ROUTING #
@@ -129,7 +127,7 @@ resource "aws_security_group" "elb-sg" {
   }
 }
 
-# Nginx security group 
+# Nginx security group
 resource "aws_security_group" "nginx-sg" {
   name   = "nginx_sg"
   vpc_id = aws_vpc.vpc.id
@@ -212,7 +210,6 @@ resource "aws_instance" "nginx2" {
     host        = self.public_ip
     user        = "ec2-user"
     private_key = file(var.private_key_path)
-
   }
 
   provisioner "remote-exec" {
